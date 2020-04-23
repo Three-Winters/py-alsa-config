@@ -22,13 +22,18 @@ def gen_fun():
 	dmix=interface.dmix.get()
 	mult=interface.multi.get()
 
-	default = pcm_holder("!default", "hw", "hw:"+str(i), 48000)
+	rate=interface.rate_box.get()
+	period_time=interface.p_time_box.get()
+	period_size=interface.p_size_box.get()
+	buffer_size=interface.b_size_box.get()
+
+	default = pcm_holder("!default", "hw", "hw:"+str(i), rate, period_time, period_size, buffer_size)
 	pcms.append(default)
 	if dmix == True:
-		dmixer = pcm_holder("dmixer", "dmix", "hw:"+str(i), 48000)
+		dmixer = pcm_holder("dmixer", "dmix", "hw:"+str(i), rate, period_time, period_size, buffer_size)
 		pcms.append(dmixer)
 	else:
-		snd = pcm_holder("snd_card", "hw", "hw:"+str(i), 48000)
+		snd = pcm_holder("snd_card", "hw", "hw:"+str(i), rate, period_time, period_size, buffer_size)
 		pcms.append(snd)
 
 	config_generator.write_pcm(pcms)
@@ -37,5 +42,6 @@ def gen_fun():
 interface.make_buttons(gen_fun)
 interface.make_listbox(alsa_hw_data.cards)
 interface.make_checkbuttons()
+interface.make_spinboxes()
 
 interface.run_loop()

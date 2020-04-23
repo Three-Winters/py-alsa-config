@@ -60,3 +60,25 @@ class UI():
 		button.pack()
 
 		diag.mainloop()
+
+	def make_spinboxes(self):
+		self.rate_box = Spinbox(self.m, values=(8000, 11025, 16000, 22050, 32000, 44100, 48000, 88200, 192000))
+		self.p_time_box = Spinbox(self.m, values=(0, 2, 4, 8, 16, 24, 32, 64, 128))
+		self.p_size_box = Spinbox(self.m, from_=0, to=65536)
+		self.b_size_box = Spinbox(self.m, from_=0, to=65536)
+
+		label1 = Label(self.m, text='Rate')
+		label1.pack()
+		self.rate_box.pack()
+
+		label2 = Label(self.m, text='Period Time')
+		label2.pack()
+		self.p_time_box.pack()
+
+		label3 = Label(self.m, text='Period Size')
+		label3.pack()
+		self.p_size_box.pack()
+
+		label4 = Label(self.m, text='Buffer Size')
+		label4.pack()
+		self.b_size_box.pack()
