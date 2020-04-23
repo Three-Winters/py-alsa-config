@@ -21,11 +21,9 @@ def gen_fun():
 		return
 	dmix=interface.dmix.get()
 	mult=interface.multi.get()
-	defa=interface.default.get()
 
-	if defa == True:
-		default = pcm_holder("!default", "hw", "hw:"+str(i), 48000)
-		pcms.append(default)
+	default = pcm_holder("!default", "hw", "hw:"+str(i), 48000)
+	pcms.append(default)
 	if dmix == True:
 		dmixer = pcm_holder("dmixer", "dmix", "hw:"+str(i), 48000)
 		pcms.append(dmixer)

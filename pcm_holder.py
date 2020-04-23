@@ -12,7 +12,13 @@ class pcm_holder():
 		return(self.slave)
 
 	def generate_configuration(self):
-		return(self.get_name()+" {"+"\n"
-				   +"type "+self.atype+"\n"
-				   +"slave.pcm \""+self.get_slave()
-				   +"\"\n"+"}")
+		if self.atype != "dmix" and self.atype != "multi":
+			return(self.get_name()+" {"+"\n"
+					+"type "+self.atype+"\n"
+					   +"slave.pcm \""+self.get_slave()
+					   +"\"\n"+"}")
+		if self.atype == "dmix":
+			return(self.get_name()+"{\n"+
+					   "type "+self.atype+"\n"+
+					   "slave.pcm \""+self.get_slave()+"\"\n"+
+					   "}")

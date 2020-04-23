@@ -39,16 +39,12 @@ class UI():
 	def make_checkbuttons(self):
 		self.dmix=IntVar()
 		self.multi=IntVar()
-		self.default=IntVar()
 
-		self.defbt = Checkbutton(self.frame1, text="default",
-									  variable=self.default)
 		self.dmixbt = Checkbutton(self.frame1, text="dmix",
 									  variable=self.dmix)
 		self.multbt = Checkbutton(self.frame1, text="multi",
 									  variable=self.multi)
 
-		self.defbt.pack()
 		self.dmixbt.pack()
 		self.multbt.pack()
 
