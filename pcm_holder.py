@@ -1,3 +1,6 @@
+
+#This is a class to hold various PCM data in
+#an easy to parse object.
 class pcm_holder():
 	def __init__(self, name, atype, slave, rate, period_time, period_size, buffer_size):
 		self.name = name
@@ -14,6 +17,7 @@ class pcm_holder():
 	def get_slave(self):
 		return(self.slave)
 
+	#Return the .asoundrc form of this pcm in a string.
 	def generate_configuration(self):
 		if self.atype != "dmix" and self.atype != "multi":
 			return(self.get_name()+" {"+"\n"

@@ -5,7 +5,7 @@ import getopt
 #import alsaaudio
 
 import alsa_hw_data
-import config_generator
+import config_writer
 from pcm_holder import pcm_holder
 from UI import UI
 
@@ -36,7 +36,7 @@ def gen_fun():
 		snd = pcm_holder("snd_card", "hw", "hw:"+str(i), rate, period_time, period_size, buffer_size)
 		pcms.append(snd)
 
-	config_generator.write_pcm(pcms)
+	config_writer.write_pcm(pcms)
 	interface.make_confirm_diag("Operation completed!")
 
 interface.make_buttons(gen_fun)
