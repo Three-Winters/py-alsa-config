@@ -42,7 +42,7 @@ class UI():
 
 		self.dmixbt = Checkbutton(self.frame1, text="dmix",
 									  variable=self.dmix)
-		self.multbt = Checkbutton(self.frame1, text="multi",
+		self.multbt = Checkbutton(self.frame1, text="multi (with sound loop, implies dmix)",
 									  variable=self.multi)
 
 		self.dmixbt.pack()

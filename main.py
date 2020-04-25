@@ -2,7 +2,6 @@
 
 import sys
 import getopt
-#import alsaaudio
 
 import alsa_hw_data
 import config_writer
@@ -27,14 +26,20 @@ def gen_fun():
 	period_size=interface.p_size_box.get()
 	buffer_size=interface.b_size_box.get()
 
-	default = pcm_holder("!default", "hw", "hw:"+str(i), rate, period_time, period_size, buffer_size)
-	pcms.append(default)
-	if dmix == True:
+	if dmix == True and mult == False:
 		dmixer = pcm_holder("dmixer", "dmix", "hw:"+str(i), rate, period_time, period_size, buffer_size)
 		pcms.append(dmixer)
-	else:
+	elif mult == True:
 		snd = pcm_holder("snd_card", "hw", "hw:"+str(i), rate, period_time, period_size, buffer_size)
 		pcms.append(snd)
+
+		default = pcm_holder("!default", "asym", "out", rate, period_time, period_size, buffer_size)
+		pcms.append(default)
+
+
+	else:
+		default = pcm_holder("!default", "hw", "hw:"+str(i), rate, period_time, period_size, buffer_size)
+		pcms.append(default)
 
 	config_writer.write_pcm(pcms)
 	interface.make_confirm_diag("Operation completed!")
